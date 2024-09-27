@@ -5,8 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 public enum ClientsAppsPwa {
-    S2BV52("s2b"),
-    S2BV53("s2b"),
+    S2B("s2b"),
     PODOROGNIK("podorognik"),
     CAPITALSKILLS("capitalskills"),
     GILIS("gilis"),

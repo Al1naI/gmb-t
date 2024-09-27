@@ -18,8 +18,7 @@ public class DataSuppliers {
     @DataProvider(name = "checkClientsAppsPwa")
     public Object[][] checkClientsAppsPwa() {
         return new Object[][] {
-                {ClientsAppsPwa.S2BV52},
-                {ClientsAppsPwa.S2BV53},
+                {ClientsAppsPwa.S2B},
                 {ClientsAppsPwa.PODOROGNIK},
                 {ClientsAppsPwa.CAPITALSKILLS},
                 {ClientsAppsPwa.GILIS},
