@@ -64,4 +64,5 @@ test {
         exceptionFormat "full"
     }
     useJUnitPlatform()
+
 }
