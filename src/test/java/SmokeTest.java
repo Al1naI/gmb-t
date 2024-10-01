@@ -1,22 +1,14 @@
-import javax.validation.constraints.AssertTrue;
-
-import Steps.BrowserSteps;
 import gmdAndPoints.admAndPoints;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import utils.BaseTest;
-import io.qameta.allure.Feature;
-import org.junit.Test;
 import ru.testit.annotations.WorkItemIds;
-import utils.Locators;
-
-import static Steps.BrowserSteps.closeBrowser;
-import static Steps.BrowserSteps.openAdm;
-
+import utils.BaseTest;
 
 @Feature("Смок-тесты")
 @Story("Смок-тесты")

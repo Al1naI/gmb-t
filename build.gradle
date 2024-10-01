@@ -13,6 +13,7 @@ sourceCompatibility = JavaVersion.VERSION_17
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = "UTF-8"
 
+def threadNumber = project.hasProperty('threadNumber') ? threadNumber.toInteger() : 1
 def allureVersion = '2.24.0'
 
 repositories {
@@ -21,11 +22,34 @@ repositories {
 
 configurations {
     all {
+        resolutionStrategy.cacheDynamicVersionsFor 4, 'seconds'
+        resolutionStrategy.cacheChangingModulesFor 4, 'seconds'
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
 }
 
+configurations {
+    agent
+    aspectConfig
+}
+
+ext {
+    aspectjVersion = '1.9.9.1'
+}
+
+[compileJava, compileTestJava]*.options*.compilerArgs = ['-parameters']
+
+allure {
+    autoconfigure = true
+    aspectjweaver = true
+    version = allureVersion
+    useTestNG {
+        version = allureVersion
+    }
+}
+
 dependencies {
+    agent "org.aspectj:aspectjweaver:${aspectjVersion}"
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
@@ -66,5 +90,30 @@ test {
         exceptionFormat "full"
     }
     useJUnitPlatform()
+
+    tasks.register("testSmoke", Test) {}
+
+    tasks.withType(Test) {
+        useTestNG()
+        jvmArgs("-javaagent:${configurations.agent.singleFile}")
+        options {
+            systemProperties(System.getProperties())
+        }
+    }
+
+    tasks.named("test") {
+        options {
+            parallel 'methods'
+            threadCount threadNumber
+        }
+    }
+
+    tasks.named("testSmoke") {
+        options {
+            includeGroups 'smoke'
+            parallel 'methods'
+            threadCount threadNumber
+        }
+    }
 
 }
