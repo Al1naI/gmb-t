@@ -13,7 +13,7 @@ sourceCompatibility = JavaVersion.VERSION_17
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = "UTF-8"
 
-def allureVersion = '2.21.0'
+def allureVersion = '2.24.0'
 
 repositories {
     mavenCentral()
@@ -33,6 +33,8 @@ dependencies {
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.24.0'
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'junit:junit:4.13.2'
+    testImplementation platform("io.qameta.allure:allure-bom:$allureVersion")
+    testImplementation "io.qameta.allure:allure-testng"
     implementation(
             'org.testng:testng:7.7.0',
             'org.projectlombok:lombok:1.18.30',
