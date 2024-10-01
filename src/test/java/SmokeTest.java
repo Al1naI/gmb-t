@@ -2,6 +2,7 @@ import javax.validation.constraints.AssertTrue;
 
 import Steps.BrowserSteps;
 import gmdAndPoints.admAndPoints;
+import io.qameta.allure.Story;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +19,7 @@ import static Steps.BrowserSteps.openAdm;
 
 
 @Feature("Смок-тесты")
+@Story("Смок-тесты")
 public class SmokeTest extends BaseTest {
 
 

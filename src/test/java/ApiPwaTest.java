@@ -1,10 +1,14 @@
 import enums.ClientsAppsPwa;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.qameta.allure.restassured.AllureRestAssured;
 import org.testng.annotations.Test;
 import utils.DataSuppliers;
 
 import static io.restassured.RestAssured.*;
 
+@Feature("Проверка API приложений")
+@Story("Проверка API приложений")
 public class ApiPwaTest {
     String pwaUrlV52 = ".getmeback.ru/rest/mobile/v52/app";
     String pwaUrlV53 = ".getmeback.ru/rest/mobile/v53/app";
